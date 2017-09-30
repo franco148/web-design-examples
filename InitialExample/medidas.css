@@ -1,0 +1,41 @@
+body {
+	/* Los pixeles son una medida relativa
+	ya que dependen de la resolucion de la pantalla,
+	y este caso particular, para el tamanio de 
+	las fuentes es mejor usar las medidas em
+	*/
+	font-size: 20px;
+}
+
+p.em {
+	/*En este caso la medida em podria depender
+	de la definicion de su padre. Es decir si en este
+	caso el body tiene una configurarion de 16px.
+	Para el caso el parrafo con la clase em tendra 
+	un tamanio del doble de lo que hereda. Si por
+	alguna razon incrementamos en 1 unidad el valor
+	del em, entonces realmente sera el doble del 
+	valor que esta heredando.
+	
+	La unidad referencia por default es en base a la
+	fuente que se usa se toma la anchura de la M
+	*/
+	font-size: 2em;
+}
+
+div p {
+	/*En base a lo heredado hace los calculos*/
+	font-size: 30em;
+}
+
+div p.rem {
+	/*Calcula en funcion del root, no le afecta
+	la herencia.
+	*/
+	font-size: 5rem;
+}
+
+p.ex {
+	/*Se basa en la altura de la letra X*/
+	font-size: 1ex;
+}
