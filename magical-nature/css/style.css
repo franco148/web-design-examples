@@ -63,6 +63,12 @@ body {
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
+
+  /* This is to fix a shake that is happening in the animation */
+  /* It determines if the back part of the element when we transform it is visible of hidden for the user
+  So Imagine we have an element and we rotate it 180 degress, so it would be logical that we then see the back part of
+  that element. But if we use backface-visibility hidden, then that back part actually gets hidden. */
+  backface-visibility: hidden;
 }
 
 .heading-primary-main {
@@ -71,6 +77,17 @@ body {
   font-size: 60px;
   font-weight: 400;
   letter-spacing: 35px;
+
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  /* Start the animation after 3 seconds */
+  /* animation-delay: 3s; */
+  
+  /* How many times the animation is going to occur */
+  /* animation-iteration-count: 3; */
+  
+  /* How the animation will proceed: How fast, how slow */
+  animation-timing-function: ease-out; /* faster to slower | ease-in: slower to faster */
 }
 
 .heading-primary-sub {
@@ -78,4 +95,42 @@ body {
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 17.4px;
+
+  animation: moveInRight 1s ease-out;
+  /* animation-name: moveInRight; */
+  /* animation-duration: 1s ease-out; */
+  /* animation-timing-function: ease-out; */
+}
+
+/* keyframes are going to help us to add animations to our design */
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  80% {
+    transform: translateX(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+
+  80% {
+    transform: translateX(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
 }
