@@ -137,6 +137,18 @@ body {
   }
 }
 
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
 /* Link: is a pseudo-class, and pseudo classes are a special state of a selector, so in this case
 It is a state of the button selector 
 
@@ -150,6 +162,7 @@ the button again*/
   display: inline-block;
   border-radius: 100px; /* This is for rounding the button */
   transition: all .2s;
+  position: relative;
 
   /* ? For positioning, can we use this as previously with transform? It would not be a good idea. */
   /* 
@@ -171,4 +184,41 @@ the button again*/
 .btn-white {
   background-color: #fff;
   color: #777;
+}
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  /* 
+  * Remember that the absolute positioning needs to have a reference, and the reference is the first element
+  * with a relative position that it can find. Now in this case it would be the header (currently). But we 
+  * don't want it to be the header, we want it to be hidden after the button. And so, the reference should be
+  * button. 
+  * Therefore, what we have to do is to set the position property of the button to relative (btn:link, visited)
+  */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .4s;
+}
+
+.btn-white::after {
+  background-color: #fff;
+}
+
+.btn:hover::after {
+  /* If we do scale 2, then it will appear double the size that it had before. */
+  /* transform: scale(2); */
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn-animated {
+  animation: moveInBottom .5s ease-out .75s;
+  /* This will automatically apply the styles up to zero percent before animation starts. */
+  animation-fill-mode: backwards;
 }
