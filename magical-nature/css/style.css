@@ -58,6 +58,7 @@ body {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .heading-primary {
@@ -69,6 +70,7 @@ body {
   So Imagine we have an element and we rotate it 180 degress, so it would be logical that we then see the back part of
   that element. But if we use backface-visibility hidden, then that back part actually gets hidden. */
   backface-visibility: hidden;
+  margin-bottom: 60px;
 }
 
 .heading-primary-main {
@@ -133,4 +135,40 @@ body {
     opacity: 1;
     transform: translate(0);
   }
+}
+
+/* Link: is a pseudo-class, and pseudo classes are a special state of a selector, so in this case
+It is a state of the button selector 
+
+Visited: So this is the state when the user has already clicked on the button once before and then sees
+the button again*/
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px; /* valuepx: applies all, valueX - valueY: top-bottom left-right, valX-valY-valZ-ValU: top-right-bottom-left*/
+  display: inline-block;
+  border-radius: 100px; /* This is for rounding the button */
+  transition: all .2s;
+
+  /* ? For positioning, can we use this as previously with transform? It would not be a good idea. */
+  /* 
+  * So in this case because the display: inset-block;, this could be threated as text, so that will be fixed
+  * adding text-align: center; in .text-box above 
+  */
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .2); /* x position, y position, blur value, color of the shadow */
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+}
+
+.btn-white {
+  background-color: #fff;
+  color: #777;
 }
