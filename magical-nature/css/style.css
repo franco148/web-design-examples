@@ -6,3 +6,35 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
+
+/**
+* ? Previously we needed to use some tools like normalize in order to reset the
+* ? default styles for the browser, but nowadays that is not required anymore, so
+* ? we can instead use the UNIVERSAL SELECTOR
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* ? It changes the box model so the borders and the 
+                            ? paddings are not longer added to the total width 
+                            ? or the total height that we specify for a box */
+}
+
+body {
+  font-family: "Lato", sans-serif; /* Including lato as a font-family, if it is not available, then use sans-serif*/
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7; /* ? This means 1.7 times bigger than the predefined line height */
+  color: #777;
+  padding: 30px; /* This is not inherited */
+}
+
+.header {
+  height: 95vh; /* 95% of the viewport height */
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url('../img/hero.jpg');
+  background-size: cover; /* fit the element inside of the box */
+  background-position: top;
+
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
