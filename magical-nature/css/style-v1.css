@@ -1,0 +1,271 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+/**
+* ? Previously we needed to use some tools like normalize in order to reset the
+* ? default styles for the browser, but nowadays that is not required anymore, so
+* ? we can instead use the UNIVERSAL SELECTOR
+*/
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  /* box-sizing: border-box; */ /* ? It changes the box model so the borders and the 
+                            ? paddings are not longer added to the total width 
+                            ? or the total height that we specify for a box */
+  /* We will use inheritance here. Which means that it will be inherited to all elements based
+    on the value that was defined in body element.
+  */
+  box-sizing: inherit; 
+}
+
+/* ? The root font size is set in the HTML selector */
+html {
+  /* The following way would not be really a good practice because sometimes the users
+  can change the font-size of their browsers. So our page could not be seen as we
+  want for them, in that sense we may need to use percentages as a unit. */
+  /* font-size: 10px; */
+
+  /* For example, according to the following configuration, it will take the 100% of the size
+  configured by the users, which means if the used did not change the default configuration, 
+  it will take 16px as a value, if for some reason it has been changed, it will take that value. */
+  /* font-size: 100%; */
+
+  /* But in this specific scenario we need to put font-size as 10, so we need to set
+  10/16 as a percentage. */
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Lato", sans-serif; /* Including lato as a font-family, if it is not available, then use sans-serif*/
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7; /* ? This means 1.7 times bigger than the predefined line height */
+  color: #777;
+  /* padding: 30px; */ /* This is not inherited */
+  padding: 3rem;
+
+  /* This will be inherited to the children elements */
+  box-sizing: border-box;
+}
+
+.header {
+  height: 95vh; /* 95% of the viewport height */
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url('../img/hero.jpg');
+  background-size: cover; /* fit the element inside of the box */
+  background-position: top;
+
+  /* adding position due to logo-box */
+  position: relative;
+
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+
+/* The position of the logo is going to be based on its parent element, in this case header, so that is why we need to add position to it. */
+.logo-box {
+  position: absolute;
+  /* top: 40px; */
+  top: 4rem;
+  /* left: 40px; */
+  left: 4rem;
+}
+
+.logo {
+  /* height: 35px; */
+  height: 3.5rem;
+}
+
+.text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+
+  /* This is to fix a shake that is happening in the animation */
+  /* It determines if the back part of the element when we transform it is visible of hidden for the user
+  So Imagine we have an element and we rotate it 180 degress, so it would be logical that we then see the back part of
+  that element. But if we use backface-visibility hidden, then that back part actually gets hidden. */
+  backface-visibility: hidden;
+  /* margin-bottom: 60px; */
+  margin-bottom: 6rem;
+}
+
+.heading-primary-main {
+  /* blocks takes the whole width */
+  display: block;
+  /* font-size: 60px; */
+  font-size: 6rem;
+  font-weight: 400;
+  /* letter-spacing: 35px; */
+  letter-spacing: 3.5rem;
+
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  /* Start the animation after 3 seconds */
+  /* animation-delay: 3s; */
+  
+  /* How many times the animation is going to occur */
+  /* animation-iteration-count: 3; */
+  
+  /* How the animation will proceed: How fast, how slow */
+  animation-timing-function: ease-out; /* faster to slower | ease-in: slower to faster */
+}
+
+.heading-primary-sub {
+  display: block;
+  /* font-size: 20px; */
+  font-size: 2rem;
+  font-weight: 700;
+  /* letter-spacing: 17.4px; */
+  letter-spacing: 1.75rem;
+
+  animation: moveInRight 1s ease-out;
+  /* animation-name: moveInRight; */
+  /* animation-duration: 1s ease-out; */
+  /* animation-timing-function: ease-out; */
+}
+
+/* keyframes are going to help us to add animations to our design */
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    /* transform: translateX(-100px); */
+    transform: translateX(-10rem);
+  }
+
+  80% {
+    /* transform: translateX(10px); */
+    transform: translateX(1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    /* transform: translateX(100px); */
+    transform: translateX(10rem);
+  }
+
+  80% {
+    /* transform: translateX(-10px); */
+    transform: translateX(-1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    /* transform: translateY(30px); */
+    transform: translateY(3rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+/* Link: is a pseudo-class, and pseudo classes are a special state of a selector, so in this case
+It is a state of the button selector 
+
+Visited: So this is the state when the user has already clicked on the button once before and then sees
+the button again*/
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  /* padding: 15px 40px; */ /* valuepx: applies all, valueX - valueY: top-bottom left-right, valX-valY-valZ-ValU: top-right-bottom-left*/
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  /* border-radius: 100px; */ /* This is for rounding the button */
+  border-radius: 10rem;
+  transition: all .2s;
+  position: relative;
+  font-size: 1.6rem; /* In order to maintain the original 16px font-size of the button*/
+
+  /* ? For positioning, can we use this as previously with transform? It would not be a good idea. */
+  /* 
+  * So in this case because the display: inline-block;, this could be threated as text, so that will be fixed
+  * adding text-align: center; in .text-box above 
+  */
+}
+
+.btn:hover {
+  /* transform: translateY(-3px); */
+  transform: translateY(-0.3rem);
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, .2); */ /* x position, y position, blur value, color of the shadow */
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  /* box-shadow: 0 5px 10px rgba(0, 0, 0, .2); */
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+}
+
+.btn-white {
+  background-color: #fff;
+  color: #777;
+}
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  /* border-radius: 100px; */
+  border-radius: 10rem;
+  /* 
+  * Remember that the absolute positioning needs to have a reference, and the reference is the first element
+  * with a relative position that it can find. Now in this case it would be the header (currently). But we 
+  * don't want it to be the header, we want it to be hidden after the button. And so, the reference should be
+  * button. 
+  * Therefore, what we have to do is to set the position property of the button to relative (btn:link, visited)
+  */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .4s;
+}
+
+.btn-white::after {
+  background-color: #fff;
+}
+
+.btn:hover::after {
+  /* If we do scale 2, then it will appear double the size that it had before. */
+  /* transform: scale(2); */
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn-animated {
+  animation: moveInBottom .5s ease-out .75s;
+  /* This will automatically apply the styles up to zero percent before animation starts. */
+  animation-fill-mode: backwards;
+}
