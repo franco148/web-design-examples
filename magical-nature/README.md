@@ -30,6 +30,10 @@ For using `sass` once installed, we will need to add a script in `package.json` 
 ```
 This can be executed as: `npm run compile:sass`. For keep watching we would need to have: `"compile:sass": "node-sass sass/main.scss css/style.css -w"`
 
+- Live-Server: `npm install live-server -g` This we need to install globally, that is why it does not have --save or --save-dev. Since this is installed globally we can call it from the command line.
+
+Command is: First go to the folder where your index.html is located then `live-server`
+
 ###### Note:
 - --save-dev: is `dev` dependencies that is used as a developer tool for development.
 - --save: is a dependency that the project needs.
