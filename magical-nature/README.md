@@ -6,6 +6,30 @@
 In order to install required tools in our project, first we need to create our `package.json` file, for that we need to execute `npm init`
 - sass: `npm install node-sass --save-dev`
 
+For example if we need a dependency for the project:
+- jquery: `npm install jquery --save`
+- jquery: `npm uninstall jquery --save`
+
+For using `sass` once installed, we will need to add a script in `package.json` as follows:
+
+```json
+{
+  "name": "magical-nature",
+  "version": "1.0.0",
+  "description": "Landing page for Magical-Nature",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass sass/main.scss css/style.css"
+  },
+  "author": "Franco Arratia",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.14.1"
+  }
+}
+```
+This can be executed as: `npm run compile:sass`. For keep watching we would need to have: `"compile:sass": "node-sass sass/main.scss css/style.css -w"`
+
 ###### Note:
 - --save-dev: is `dev` dependencies that is used as a developer tool for development.
 - --save: is a dependency that the project needs.
