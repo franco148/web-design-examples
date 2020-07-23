@@ -39,5 +39,12 @@ Command is: First go to the folder where your index.html is located then `live-s
 - --save: is a dependency that the project needs.
 
 
-
+##### 7-1 Pattern
+- abstracts
+- base
+- components
+- layout
+- pages
+- themes
+- vendors
 
