@@ -32,3 +32,26 @@ body {
     animation: moveInRight 1s ease-out;
   }
 }
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  // This will help to cover only the phrase, because by default it takes the whole row.
+  display: inline-block;
+  // This will help us to add a gradient color to the secondary heading
+  background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+  // The backgroud gets clipped exactly where the text is. It will clip it to exactly the
+  // places where the text sits, so the background gradient will only be visible where the text is.
+  background-clip: content-box;
+  -webkit-background-clip: text;  
+  // So make the test transparent and see the background color in the text.
+  color: transparent;
+  letter-spacing: .2rem;
+  transition: all .2s;
+
+  &:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
+  }
+}

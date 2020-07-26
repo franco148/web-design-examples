@@ -1,0 +1,10 @@
+// REMEMBER!!! The heading secondary was defined as inline-block and so,
+// if we set the parent to text-align-center, then that inline-block element inside it
+// is treated as text and will therefore be centered
+.u-center-text {
+  text-align: center;
+}
+
+.u-margin-bottom-8 {
+  margin-bottom: 8rem;
+}

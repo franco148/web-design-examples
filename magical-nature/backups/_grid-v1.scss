@@ -1,6 +1,6 @@
 .row {
   max-width: $grid-width;
-  // background-color: #eee;
+  background-color: #eee;
   margin: 0 auto;
   // We need to add the following to all except the last child
   // margin-bottom: $gutter-vertical;
@@ -15,7 +15,7 @@
   // asterics = any class that contains col-
   // dollar = any class that ends with col-
   [class^="col-"] {
-    // background-color: orangered;
+    background-color: orangered;
     float: left;
 
     &:not(:last-child) {
