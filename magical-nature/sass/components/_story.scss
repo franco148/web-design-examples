@@ -1,0 +1,39 @@
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba($color-black, .1);
+  background-color: $color-white;
+  border-radius: .3rem;
+  padding: 6rem;
+  padding-left: 9rem;
+  font-size: $default-font-size;
+  transform: skewX(-12deg);
+
+  // & > * {
+    // This is not going to work with the image because the precedence with
+    // another transform added in the story section.
+    // That is why we will require to add this to the specific tags.
+    // transform: skewX(12deg);
+  // }
+
+  &__shape {
+    width: 12rem;
+    height: 12rem;
+    float: left; // This works only with dimentions (example with, height)
+    // This for safari
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    // This makes the shape of the image, to set this the shape should float as this is.
+    shape-outside: circle(50% at 50% 50%);
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    transform: translateX(-3rem) skewX(12deg);
+  }
+
+  &__img {
+    height: 100%;
+  }
+
+  &__text {
+    transform: skewX(12deg);
+  }
+}
