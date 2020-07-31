@@ -13,6 +13,11 @@
     border-radius: 50%;
     z-index: 2000;
     box-shadow: 0 1rem 3rem rgba($color-black, .1);
+
+    // For button icon alignment
+    text-align: center;
+
+    cursor: pointer;
   }
 
   &__background {
@@ -89,6 +94,7 @@
     }
   }
   
+  // * FUNCTIONALITY
   &__checkbox:checked ~&__background {
     transform: scale(60);
   }
@@ -97,4 +103,58 @@
     width: 100%;
     opacity: 1;
   }
+
+  // * ICON
+  &__icon {
+    position: relative;
+    margin-top: 3.5rem;
+
+    &,
+    &::before,
+    &::after {
+      width: 3rem;
+      height: 2px;
+      background-color: $color-gray-dark-3;
+      display: inline-block;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      transition: all .2s;
+    }
+
+    &::before { top: -.8rem; }
+    &::after { top: .8rem; }
+  }
+
+  &__button:hover &__icon::before {
+    top: -1rem;
+  }
+
+  &__button:hover &__icon::after {
+    top: 1rem;
+  }
+
+  // X button label
+  &__checkbox:checked + &__button &__icon {
+    background-color: transparent;
+  }
+
+  &__checkbox:checked + &__button &__icon::before {
+    top: 0;
+    // transform: rotate(45deg);
+    transform: rotate(135deg);
+  }
+
+  &__checkbox:checked + &__button &__icon::after {
+    top: 0;
+    // transform: rotate(-45deg);
+    transform: rotate(-135deg);
+  }
+
+  // Another important tool would be TRANSFORM ORIGIN. It basically describes where the
+  // transformation happens.
 }
