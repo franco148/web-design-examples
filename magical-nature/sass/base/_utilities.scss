@@ -1,0 +1,28 @@
+// REMEMBER!!! The heading secondary was defined as inline-block and so,
+// if we set the parent to text-align-center, then that inline-block element inside it
+// is treated as text and will therefore be centered
+
+// ! The UTILITY classes can have the important keyword!!!!
+.u-center-text {
+  text-align: center !important;
+}
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem !important;
+}
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem !important;
+}
+
+.u-margin-botton-small {
+  margin-bottom: 1.5rem !important;
+}
+
+.u-margin-top-big {
+  margin-top: 8rem !important;
+}
+
+.u-margin-top-huge {
+  margin-top: 10rem !important;
+}

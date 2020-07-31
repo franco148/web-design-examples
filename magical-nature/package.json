@@ -1,0 +1,14 @@
+{
+  "name": "magical-nature",
+  "version": "1.0.0",
+  "description": "Landing page for Magical-Nature",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass sass/main.scss css/style.css -w"
+  },
+  "author": "Franco Arratia",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.14.1"
+  }
+}
