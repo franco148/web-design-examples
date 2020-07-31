@@ -157,4 +157,6 @@
 
   // Another important tool would be TRANSFORM ORIGIN. It basically describes where the
   // transformation happens.
+  // Example
+  // &::before { top: -.8rem; transform-origin: left; }
 }
