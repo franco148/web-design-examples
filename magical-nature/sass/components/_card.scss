@@ -152,8 +152,19 @@
   }
 
   
-  
-  @include respond(tab-port) {
+  /*
+  ! The following fixes an issue for devices that can not hover the components.
+  ! * only screen and (hover: none)
+  ! So the card should be displayed with the back part visible, when the screen is smaller than the defined below,
+  ! or whenever we are using a device where we can not hover. Which basically means, whenever we have a device
+  ! which uses touch as the primary input.
+
+  ! Now if you wanted to do this the other way around, then you could use
+  ! * only screen and (hover: hover)
+  */
+  // @include respond(tab-port) {
+  @media  only screen and (max-width: 56.25em),
+          only screen and (hover: none) { // ? For verifying 
     height: auto;
     border-radius: .3rem;
     background-color: $color-white;
