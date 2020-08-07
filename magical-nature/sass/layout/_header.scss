@@ -1,5 +1,5 @@
 .header {
-  height: 95vh; 
+  height: 85vh; 
   // rgba with variables only work on sass, it does not in normal css.
   background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url('../img/hero-small.jpg');
   background-size: cover; 
@@ -7,8 +7,14 @@
 
   position: relative;
 
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  // -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  // clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  @supports (clip-path: polygon(0 0) or (-webkit-clip-path: polygon(0 0))) {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    height: 95vh;
+  }
 
   // ? Here for responsive images
   // Dots Per inch (dpi): 192dpi is a resolution of the Apple retina screen, that is a high
@@ -29,7 +35,9 @@
   // }
 
   // * Would be better to use EM as a measure.
+  // * Just in case, this will not work on Safari, we need an extra condition
   @media (min-resolution: 192dpi) and (min-width: 37.5em),
+          (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
           (min-width: 75em) {
     background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url('../img/hero.jpg');
   }
