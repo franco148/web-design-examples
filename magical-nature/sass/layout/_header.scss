@@ -1,14 +1,51 @@
 .header {
-  height: 95vh; 
+  height: 85vh; 
   // rgba with variables only work on sass, it does not in normal css.
-  background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url('../img/hero.jpg');
+  background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url('../img/hero-small.jpg');
   background-size: cover; 
   background-position: top;
 
   position: relative;
 
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  // -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  // clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  @supports (clip-path: polygon(0 0) or (-webkit-clip-path: polygon(0 0))) {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    height: 95vh;
+  }
+
+  // ? Here for responsive images
+  // Dots Per inch (dpi): 192dpi is a resolution of the Apple retina screen, that is a high
+  // resolution screen that is usually used as a reference.
+
+  // This approach @media (min-resolution: 192dpi) {}  will not work 100% efficient because phone usually have 2x density, and even they have
+  // small screens, they will be getting the large images (It does not make sense, it would work perfectly with small image).
+  // So for fixing it, we will need to add a new condition.
+  // @media (min-resolution: 192dpi) and (min-width: 600px),
+  //         (min-width: 1200PX) {
+  //   background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url('../img/hero.jpg');
+  // }
+
+  // Same as above, but when the resolution is higher than 1200px
+  // This media-query can be combined above comman ',' means OR
+  // @media (min-width: 1200px) {
+  //   background-image: linear-gradient(to right bottom, rgba($color-secondary-light, 0.8), rgba($color-secondary-dark, 0.8)), url('../img/hero.jpg');
+  // }
+
+  // * Would be better to use EM as a measure.
+  // * Just in case, this will not work on Safari, we need an extra condition
+  @media  only screen and (min-resolution: 192dpi) and (min-width: 37.5em),
+          only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
+          only screen and (min-width: 75em) {
+    background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url('../img/hero.jpg');
+  }
+
+  @include respond(phone) {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  }
 
   &__logo-box {
     position: absolute;
