@@ -201,3 +201,55 @@
   text-align: center;
   padding: 2.5rem;
 }
+
+
+
+////////////////////////////////////////////////////////////
+// GALLERY
+
+.gallery {
+  display: flex;
+
+  // Remember that in reponsive design we also want flexible images, so we always have to define a width
+  // or a height in precentages so that the image stays fluid.
+  &__photo {
+    width: 100%;
+    // If we do not want white space, we should always define DISPLAY BLOCK OR INLINE-BLOCK
+    display: block;
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// HOTEL OVERVIEW
+.overview {
+  display: flex;
+  // justify-content: space-between; // This will not work to have the final result.
+
+  &__heading {}
+
+  &__stars {
+    // for occupying the whole space, this will help us to have the final result.
+    // ! this is not ideal
+    // Because this element should only be the size of its content, so in this case the size
+    // of the starts. We do not want it to have all the extra size.
+    // ? This will be solved by MARGING AUTO
+    // flex: 1; 
+    margin-right: auto;
+  }
+
+  &__icon-star,
+  &__icon-location {
+    width: 1.7rem;
+    height: 1.7rem;
+    fill: var(--color-primary);
+  }
+
+  &__location {}
+
+  &__rating {}
+
+  &__rating-average {}
+
+  &__rating-count {}
+}
