@@ -25,11 +25,19 @@
 .sidebar {
   background-color: var(--color-grey-dark-1);
 
-  // The following is for defining the flex-basis [width shink basis]
+  // The following is for defining the flex-basis [width shink percentaje of space that need to take]
   flex: 0 0 18%;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .hotel-view {
   background-color: #fff;
   flex: 1; // For covering the missing space
+
+  // Test
+  height: 80rem;
+  background-color: orangered;
 }
