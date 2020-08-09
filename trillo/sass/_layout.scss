@@ -39,6 +39,7 @@
 }
 
 .detail {
+  font-size: 1.4rem;
   display: flex;
   padding: 4.5rem;
   background-color: var(--color-grey-light-1);
@@ -46,7 +47,8 @@
 }
 
 .description {
-  font-size: 1.4rem;
+  // font-size: 1.4rem; // We will add this to the parent
+  font-size: inherit;
   background-color: #fff;
   box-shadow: var(--shadow-light);
   padding: 3rem;
@@ -56,7 +58,11 @@
 }
 
 .user-reviews {
-  background-color: yellowgreen;
   // Because the above, then we need to occupy the remaining space
   flex: 1;
+  font-size: inherit;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
