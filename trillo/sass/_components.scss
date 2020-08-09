@@ -335,3 +335,83 @@
     box-shadow: none;
   }
 }
+
+
+
+////////////////////////////////////////////////////////////
+// PARAGRAPH
+
+// Here last-child is not going to work, because it takes into account all the children elements, 
+// However there is another element called last-of-type which takes into account all elements of the same type.
+.paragraph:not(:last-of-type) {
+  margin-bottom: 2rem;
+}
+
+////////////////////////////////////////////////////////////
+// LIST
+.list {
+  list-style: none;
+  margin: 3rem 0;
+  padding: 3rem 0;
+  border-top: var(--line);
+  border-bottom: var(--line);
+
+  display: flex;
+  // In order to distribute better the space
+  flex-wrap: wrap;
+
+  &__item {
+    flex: 0 0 50%;
+    margin-bottom: .7rem;
+  }
+
+  &__item::before {
+    content: "";
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+    margin-right: .7rem;
+
+    // This approach is for OLDER browsers
+    // background-image: url(../img/chevron-thin-right.svg);
+    // background-size: cover;
+
+    // This approach is for NEWER browsers => masks
+    background-color: var(--color-primary);
+    -webkit-mask-image: url(../img/chevron-thin-right.svg);
+    -webkit-mask-size: cover;
+    mask-image: url(../img/chevron-thin-right.svg);
+    mask-size: cover;
+  }
+}
+
+////////////////////////////////////////////////////////////
+// RECOMMEND
+.recommend {
+  font-size: 1.3rem;
+  color: var(--color-grey-dark-3);
+
+  display: flex;
+  // justify-content: space-between;
+  align-items: center;
+
+  &__count {
+    margin-right: auto;
+  }
+
+  &__friends {}
+
+  &__photo {
+    // border-box includes the padding and the marging into the size of the item
+    // box-sizing: border-box; // but we do not want this (we need to add the border on top of our height and the width).
+    box-sizing: content-box; // (default)
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    border: 3px solid white;
+
+    &:not(:last-child) {
+      margin-right: -1.5rem;
+    }
+  }
+}
