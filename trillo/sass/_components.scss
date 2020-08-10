@@ -135,11 +135,25 @@
   list-style: none;
   margin-top: 3.5rem;
 
+  @media only screen and (max-width: $bp-medium) {
+    display: flex;
+    margin: 0;
+  }  
+
   &__item {
     position: relative;
 
     &:not(:last-child) {
       margin-bottom: .5rem;
+
+      @media only screen and (max-width: $bp-medium) {
+        margin: 0;
+      }
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+      // All items will occupy the same space
+      flex: 1;
     }
   }
 
@@ -180,6 +194,11 @@
 
     display: flex;
     align-items: center;
+
+    @media only screen and (max-width: $bp-medium) {
+      justify-content: center;
+      padding: 2rem;
+    }
   }
 
   &__icon {
@@ -200,6 +219,10 @@
   color: var(--color-grey-light-4);
   text-align: center;
   padding: 2.5rem;
+
+  @media only screen and (max-width: $bp-medium) {
+    display: none;
+  }
 }
 
 
@@ -422,7 +445,9 @@
     border: 3px solid white;
 
     &:not(:last-child) {
-      margin-right: -1.5rem;
+      // margin-right: -1.5rem; 
+      // For fixing responsive issue
+      margin-right: -2rem;
     }
   }
 }
@@ -438,6 +463,11 @@
   margin-bottom: 3.5rem;
   position: relative;
   overflow: hidden;
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
   
   &__text {
     margin-bottom: 2rem;
@@ -500,6 +530,10 @@
 .cta {
   padding: 3.5rem;
   text-align: center;
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 2.5rem 0;
+  }
 
   &__book-now {
     font-size: 2rem;
