@@ -441,16 +441,21 @@
     width: 1rem;
     margin-right: .7rem;
 
-    // This approach is for OLDER browsers
-    // background-image: url(../img/chevron-thin-right.svg);
-    // background-size: cover;
+    // This approach is for OLDER browsers - So if below code is not supported, then this is taken into account.
+    background-image: url(../img/chevron-thin-right.svg);
+    background-size: cover;
 
     // This approach is for NEWER browsers => masks
-    background-color: var(--color-primary);
-    -webkit-mask-image: url(../img/chevron-thin-right.svg);
-    -webkit-mask-size: cover;
-    mask-image: url(../img/chevron-thin-right.svg);
-    mask-size: cover;
+    @supports(-webkit-mask-image: url()) or (mask-image: url()) {
+      background-color: var(--color-primary);
+      -webkit-mask-image: url(../img/chevron-thin-right.svg);
+      -webkit-mask-size: cover;
+      mask-image: url(../img/chevron-thin-right.svg);
+      mask-size: cover;
+
+      // Fixing issue for color in chrome
+      background-image: none;
+    }    
   }
 }
 
