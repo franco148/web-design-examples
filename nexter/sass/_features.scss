@@ -1,4 +1,12 @@
 .features {
   background-color: greenyellow;
   grid-column: center-start / center-end;
+
+  margin: 15rem 0;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  // We do not need to specy (for this case) the number of rows, that is why:
+  // grid-template-rows: auto auto; // This is not necesary, that would be the default behavior
+  grid-gap: 6rem;
 }
