@@ -1,0 +1,42 @@
+.features {
+  grid-column: center-start / center-end;
+
+  margin: 15rem 0;
+
+  display: grid;
+  // grid-template-columns: repeat(3, 1fr);
+  // * To be responsive
+  // * Remember what auto-fit does?: It simply create as many tracks as can fit
+  // * Based on the width that we define
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+
+  // We do not need to specy (for this case) the number of rows, that is why:
+  // grid-template-rows: auto auto; // This is not necesary, that would be the default behavior
+  grid-gap: 6rem;
+  align-items: start;
+}
+
+.feature {
+
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-row-gap: 1.5rem;
+  grid-column-gap: 2.5rem;
+
+  &__icon {
+    fill: $color-primary;
+    width: 4.5rem;
+    height: 4.5rem;
+    // ! The following will not work, because -1 means the end of the explicit grid
+    // ! currently we have IMPLICIT grids.
+    // grid-row: 1 / -1;
+    // ? That is is why
+    grid-row: 1 / span 2;
+
+    transform: translateY(-1rem);
+  }
+
+  &__text {
+    font-size: 1.7rem;
+  }
+}
